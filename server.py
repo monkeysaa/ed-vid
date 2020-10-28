@@ -20,7 +20,7 @@ app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 @app.route('/')
 def start_here():
     """Homepage."""
-    return render_template("homepage.html")
+    return render_template("index.html")
 
 
 # Temporary page, to ensure video list loads.
@@ -40,6 +40,58 @@ def show_movie_details(video_id):
     video = crud.get_video_by_id(video_id)
     return render_template("video_details.html", video = video)
 
+@app.route('/movies')
+def display_movies():
+    """View a list of all movies with links."""
+
+    movies = crud.get_movies()
+    
+    return render_template('all_movies.html', movies = movies)
+
+
+@app.route('/movies/<movie_id>')
+def display_this_movie(movie_id):
+    """Show details of a particular movie."""
+
+    movie = crud.get_movie_by_id(movie_id)
+    
+    return render_template('movie_details.html', movie = movie)
+
+
+@app.route('/users')
+def display_all_users():
+    """View a list of all users with option to rate movies."""
+
+    users = crud.get_users()
+    
+    return render_template('all_users.html', users = users)
+
+
+@app.route('/users/<user_id>')
+def display_this_user(user_id):
+    """Show details for a particular user."""
+
+    user = crud.get_user_by_id(user_id)
+    
+    return render_template('user_details.html', user = user)
+
+
+@app.route('/users', methods=['POST'])
+def register_user():
+    """Create a new user."""
+
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+
+    if user:
+        flash('Cannot create an account with that email. Try again.')
+    else: 
+        user = crud.create_user(email, password)
+        flash('Account created! Please log in.')
+    
+    return redirect('/')
 
 if __name__ == '__main__':
     connect_to_db(app, 'postgresql:///edvid', echo=False) # Does this go here?

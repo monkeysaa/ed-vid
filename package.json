@@ -1,0 +1,31 @@
+{
+  "name": "ed-vid",
+  "version": "1.0.0",
+  "description": "Share and save video-based lesson plans",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monkeysaa/ed-vid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monkeysaa/ed-vid/issues"
+  },
+  "homepage": "https://github.com/monkeysaa/ed-vid#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.1.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^4.5.0",
+    "webpack": "^5.2.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

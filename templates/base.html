@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+
+    {% block head %}{% endblock %}
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudfare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Edutainment!</h1>
+    </header>
+
+    <nav>
+      <!-- navigation bar here -->
+      <h2>Navigation</h2>
+      <ul>
+        <li><a href="/lessons">View all lessons</a></li>
+        <li><a href="/users">View all users</a></li>
+      </ul>
+    </nav>
+
+    {% for msg in get_flashed_messages() %}
+      <p class="flash-msg">
+        {{ msg }}
+      </p>
+    {% endfor %}
+    {% block body %}{% endblock %}
+
+    {% block after_body %}{% endblock %}
+  </body>
+</html>

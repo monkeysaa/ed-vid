@@ -45,6 +45,11 @@ def get_video_by_id(video_id):
 
     return Video.query.get(video_id)
 
+def get_users():
+    """Return a list of all users."""
+
+    return User.query.all()
+
 
 def create_association(video, activity):
     """Create and return an association."""
